@@ -1,0 +1,172 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ExperimentResultsPack",
+  "type": "object",
+  "required": [
+    "meta",
+    "runs",
+    "aggregates",
+    "artifacts"
+  ],
+  "properties": {
+    "meta": {
+      "type": "object",
+      "required": [
+        "blueprint_version",
+        "code_commit",
+        "created_utc"
+      ],
+      "properties": {
+        "blueprint_version": {
+          "type": "string"
+        },
+        "code_commit": {
+          "type": "string"
+        },
+        "created_utc": {
+          "type": "string"
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    },
+    "runs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "experiment_id",
+          "run_id",
+          "dataset",
+          "variant",
+          "baseline",
+          "seed",
+          "metrics",
+          "timing"
+        ],
+        "properties": {
+          "experiment_id": {
+            "type": "string"
+          },
+          "run_id": {
+            "type": "string"
+          },
+          "dataset": {
+            "type": "string"
+          },
+          "variant": {
+            "type": "string"
+          },
+          "baseline": {
+            "type": "string"
+          },
+          "seed": {
+            "type": "integer"
+          },
+          "metrics": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "number"
+            }
+          },
+          "timing": {
+            "type": "object",
+            "required": [
+              "wall_ms",
+              "tokens_generated",
+              "tokens_per_sec"
+            ],
+            "properties": {
+              "wall_ms": {
+                "type": "number"
+              },
+              "tokens_generated": {
+                "type": "number"
+              },
+              "tokens_per_sec": {
+                "type": "number"
+              }
+            }
+          },
+          "config_ref": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "aggregates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "experiment_id",
+          "dataset",
+          "variant",
+          "baseline",
+          "summary"
+        ],
+        "properties": {
+          "experiment_id": {
+            "type": "string"
+          },
+          "dataset": {
+            "type": "string"
+          },
+          "variant": {
+            "type": "string"
+          },
+          "baseline": {
+            "type": "string"
+          },
+          "summary": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "number"
+            }
+          },
+          "dispersion": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "number"
+            }
+          }
+        }
+      }
+    },
+    "artifacts": {
+      "type": "object",
+      "required": [
+        "tables",
+        "figures",
+        "logs"
+      ],
+      "properties": {
+        "tables": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "figures": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "logs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "checkpoints": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

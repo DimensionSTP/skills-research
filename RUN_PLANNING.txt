@@ -1,0 +1,19 @@
+RUN_AUTONOMOUS_RESEARCH_PLANNING
+
+Read and comply with all project files.
+
+Run ARS using AUTONOMOUS_RESEARCH_SYSTEM.md.
+
+If notebooklm_distilled_notes.md exists in the workspace, treat it as grounded literature evidence.
+
+Idea:
+<PASTE IDEA PARAGRAPH HERE>
+
+Constraints (optional):
+- compute:
+- model:
+- time:
+- target datasets:
+- priority:
+
+Produce all artifacts defined in OUTPUT_CONTRACT.md.

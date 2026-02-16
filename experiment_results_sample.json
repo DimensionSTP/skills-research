@@ -1,0 +1,59 @@
+{
+  "meta": {
+    "blueprint_version": "v1",
+    "code_commit": "SAMPLE_COMMIT_SHA",
+    "created_utc": "2026-02-13T17:15:15.069885+00:00",
+    "notes": "SAMPLE results pack."
+  },
+  "runs": [
+    {
+      "experiment_id": "E1",
+      "run_id": "E1_GSM8K_retrieved_skeleton_seed0",
+      "dataset": "GSM8K",
+      "variant": "retrieved_skeleton",
+      "baseline": "vanilla_slm",
+      "seed": 0,
+      "metrics": {
+        "accuracy": 0.62,
+        "avg_output_tokens": 210.0,
+        "avg_latency_ms": 95.0
+      },
+      "timing": {
+        "wall_ms": 95000.0,
+        "tokens_generated": 21000.0,
+        "tokens_per_sec": 221.0
+      },
+      "config_ref": "configs/exp/E1.yaml"
+    }
+  ],
+  "aggregates": [
+    {
+      "experiment_id": "E1",
+      "dataset": "GSM8K",
+      "variant": "retrieved_skeleton",
+      "baseline": "vanilla_slm",
+      "summary": {
+        "accuracy": 0.62,
+        "avg_output_tokens": 210.0,
+        "avg_latency_ms": 95.0
+      },
+      "dispersion": {
+        "accuracy_std": 0.0,
+        "avg_output_tokens_std": 0.0,
+        "avg_latency_ms_std": 0.0
+      }
+    }
+  ],
+  "artifacts": {
+    "tables": [
+      "artifacts/tables/main_results.csv"
+    ],
+    "figures": [
+      "artifacts/figures/acc_vs_tokens.png"
+    ],
+    "logs": [
+      "artifacts/logs/E1_seed0.log"
+    ],
+    "checkpoints": []
+  }
+}

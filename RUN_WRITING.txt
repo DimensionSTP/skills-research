@@ -1,0 +1,15 @@
+RUN_AUTONOMOUS_PAPER_DRAFTING
+
+Read and comply with all project files.
+
+Run R2P using RESULT_TO_PAPER_ENGINE.md.
+
+Inputs (must exist in workspace):
+- research_blueprint.json
+- experiment_results.json
+- paper_seed.md (if present)
+
+Produce:
+- paper_draft.md
+- appendix_next_runs.md (if needed)
+- updated_claim_registry.md

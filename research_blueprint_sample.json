@@ -1,0 +1,230 @@
+{
+  "meta": {
+    "version": "v1",
+    "created_utc": "2026-02-13T17:15:15.069885+00:00",
+    "idea_summary": "SAMPLE: Retrieved abstract reasoning skeletons to improve small-model reasoning accuracy and efficiency."
+  },
+  "research_question": {
+    "rq": "SAMPLE: Do retrieved abstract reasoning skeletons improve small-model reasoning accuracy under matched token budgets?",
+    "scope": "SAMPLE: Math + coding reasoning tasks; retrieval from a library of abstracted traces.",
+    "primary_goal": "accuracy_and_efficiency"
+  },
+  "novelty": {
+    "novelty_type": "D_new_mechanism",
+    "nearest_neighbors": [
+      "SAMPLE: reasoning distillation",
+      "SAMPLE: demonstration retrieval for reasoning",
+      "SAMPLE: rationale compression"
+    ],
+    "positioning": "SAMPLE: Retrieve compressed reasoning structure (not full demonstrations) to reduce token usage while improving accuracy.",
+    "duplicate_risk": {
+      "level": "medium",
+      "why": "SAMPLE: Overlaps with retrieval-augmented demonstrations and rationale distillation.",
+      "mitigation": "SAMPLE: Emphasize abstraction rules, token-budget-matched controls, and latency wins with small models."
+    }
+  },
+  "contributions": [
+    "SAMPLE: A method to abstract reasoning traces into reusable skeletons and retrieve them per instance.",
+    "SAMPLE: Token-budget-matched evaluation showing accuracy/latency tradeoffs.",
+    "SAMPLE: A confound-controlled study separating retrieval benefit from length and oracle effects."
+  ],
+  "hypotheses": [
+    {
+      "id": "H1",
+      "statement": "IF retrieved skeletons are relevant THEN accuracy improves UNDER matched output token budgets COMPARED TO vanilla SLM.",
+      "metrics": [
+        "accuracy",
+        "avg_output_tokens"
+      ],
+      "load_bearing": true,
+      "failure_interpretation": "If not, retrieval is not providing actionable structure beyond noise or length."
+    }
+  ],
+  "baselines": {
+    "must_have": [
+      "vanilla_slm",
+      "few_shot",
+      "distillation",
+      "random_skeleton_length_matched"
+    ],
+    "nice_to_have": [
+      "retrieval_full_demo",
+      "process_supervision",
+      "reranker_retrieval"
+    ]
+  },
+  "controls": [
+    "token_budget_matched",
+    "length_matched_random_prefix",
+    "retrieval_oracle_control",
+    "leakage_guardrail_split"
+  ],
+  "decisive_experiments": {
+    "top3": [
+      {
+        "id": "E1",
+        "name": "Token-budget-matched main comparison",
+        "purpose": "Disentangle retrieval benefit from length/compute confounds.",
+        "datasets": [
+          "GSM8K"
+        ],
+        "baselines": [
+          "vanilla_slm",
+          "few_shot"
+        ],
+        "variants": [
+          "retrieved_skeleton",
+          "random_skeleton_length_matched"
+        ],
+        "controls": [
+          "token_budget_matched",
+          "length_matched_random_prefix"
+        ],
+        "metrics": [
+          "accuracy",
+          "avg_output_tokens",
+          "avg_latency_ms"
+        ],
+        "expected_outcomes": "retrieved_skeleton > random_skeleton and retrieved_skeleton >= vanilla under same token budget.",
+        "interpretation_rules": "If retrieved_skeleton only wins when allowed longer outputs, treat as length confound.",
+        "compute_plan": "SAMPLE: 1 GPU; 3 seeds; batch=..."
+      }
+    ],
+    "single_best": {
+      "id": "E1",
+      "name": "Token-budget-matched main comparison",
+      "purpose": "Single most decisive test for the core claim.",
+      "datasets": [
+        "GSM8K"
+      ],
+      "baselines": [
+        "vanilla_slm"
+      ],
+      "variants": [
+        "retrieved_skeleton",
+        "random_skeleton_length_matched"
+      ],
+      "controls": [
+        "token_budget_matched",
+        "length_matched_random_prefix"
+      ],
+      "metrics": [
+        "accuracy",
+        "avg_output_tokens",
+        "avg_latency_ms"
+      ],
+      "expected_outcomes": "retrieved_skeleton improves accuracy at equal or lower token usage.",
+      "interpretation_rules": "If no improvement, pivot to better abstraction or retrieval.",
+      "compute_plan": "SAMPLE: 1 GPU; 3 seeds."
+    }
+  },
+  "experiment_matrix": [
+    {
+      "id": "E1",
+      "name": "Token-budget-matched main comparison",
+      "purpose": "Core evaluation.",
+      "datasets": [
+        "GSM8K"
+      ],
+      "baselines": [
+        "vanilla_slm"
+      ],
+      "variants": [
+        "retrieved_skeleton",
+        "random_skeleton_length_matched"
+      ],
+      "controls": [
+        "token_budget_matched",
+        "length_matched_random_prefix"
+      ],
+      "metrics": [
+        "accuracy",
+        "avg_output_tokens",
+        "avg_latency_ms"
+      ],
+      "expected_outcomes": "SAMPLE",
+      "interpretation_rules": "SAMPLE",
+      "compute_plan": "SAMPLE"
+    }
+  ],
+  "metrics": [
+    {
+      "name": "accuracy",
+      "unit": "fraction",
+      "goal": "maximize"
+    },
+    {
+      "name": "avg_output_tokens",
+      "unit": "tokens",
+      "goal": "minimize"
+    },
+    {
+      "name": "avg_latency_ms",
+      "unit": "ms",
+      "goal": "minimize"
+    }
+  ],
+  "risks": [
+    {
+      "risk": "Length confound",
+      "why_it_matters": "Longer prefixes or outputs can inflate accuracy without real reasoning improvement.",
+      "mitigation": "Token-budget matching and length-matched random prefix controls."
+    }
+  ],
+  "top_tier_simulation": {
+    "scores": {
+      "novelty": 3.0,
+      "rigor": 4.0,
+      "clarity": 3.5,
+      "impact": 3.0
+    },
+    "decision": "SAMPLE: borderline accept with strong controls and clear efficiency wins",
+    "upgrade_plan": [
+      "Add multi-domain evaluation (math + coding)",
+      "Add strong demo-retrieval baseline",
+      "Add error analysis"
+    ]
+  },
+  "writing_plan": {
+    "title_candidates": [
+      "SAMPLE: Retrieved Reasoning Skeletons for Efficient Small-Model Reasoning"
+    ],
+    "outline": {
+      "introduction": "SAMPLE: problem, gap, contributions, summary of results (numbers).",
+      "related_work": "SAMPLE: taxonomy with positioning.",
+      "method": "SAMPLE: abstraction + embedding + retrieval + prefixing procedure.",
+      "experiments": "SAMPLE: datasets, baselines, metrics, results, ablations, efficiency.",
+      "discussion": "SAMPLE: interpretation and limitations."
+    },
+    "claim_registry": [
+      {
+        "claim_id": "C1",
+        "claim_text": "SAMPLE: Retrieved skeletons improve accuracy under matched token budgets.",
+        "required_evidence": [
+          "E1:GSM8K:accuracy",
+          "E1:GSM8K:avg_output_tokens"
+        ],
+        "where_in_paper": "Experiments/Main Results"
+      }
+    ],
+    "figure_table_plan": [
+      "Table 1: Main accuracy + tokens + latency (token-budget matched).",
+      "Table 2: Ablations: random skeleton, retrieval quality, skeleton length.",
+      "Figure 1: Accuracy vs tokens tradeoff curve."
+    ],
+    "limitations": [
+      "SAMPLE: May not generalize beyond selected benchmarks.",
+      "SAMPLE: Retrieval quality depends on skeleton library coverage."
+    ]
+  },
+  "assumptions": [
+    {
+      "assumption": "SAMPLE: Access to a strong LLM to generate reasoning traces.",
+      "confidence": "high"
+    },
+    {
+      "assumption": "SAMPLE: Benchmark licenses allow this usage.",
+      "confidence": "medium"
+    }
+  ]
+}
