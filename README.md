@@ -6,7 +6,16 @@
 2. Human execution: run experiments and collect results in a strict JSON format.
 3. `R2P` (writing): draft a paper from the plan + results.
 
-The repository provides controller prompts, output contracts, schemas, and sample files so the pipeline is reproducible and machine-readable.
+The repository provides controller prompts, output contracts, schemas, sample payloads, and starter templates so the pipeline is reproducible and machine-readable.
+
+## Documentation Hub
+
+- Korean overview: `README_ko.md`
+- Detailed usage (EN): `USAGE_GUIDE.md`
+- Detailed usage (KO): `USAGE_GUIDE_ko.md`
+- Workflow cheatsheet: `research-workflow-cheatsheet.md`
+- Contribution rules: `CONTRIBUTING.md`
+- Change history: `CHANGELOG.md`
 
 ## Pipeline Overview
 
@@ -27,19 +36,26 @@ The repository provides controller prompts, output contracts, schemas, and sampl
 
 ## Repository Contents
 
-- `AUTONOMOUS_RESEARCH_SYSTEM.md`: ARS controller prompt (end-to-end planning driver).
-- `OUTPUT_CONTRACT.md`: required artifact list and formatting contract for ARS outputs.
-- `operations.md`: high-level 3-phase workflow (planning -> execution -> writing).
-- `RESULT_TO_PAPER_ENGINE.md`: R2P controller prompt for autonomous paper drafting.
-- `RUN_PLANNING.txt`: one-shot planning trigger text.
-- `RUN_WRITING.txt`: one-shot drafting trigger text.
-- `CHATGPT_ONE_SHOT_TRIGGERS.md`: compact ChatGPT trigger prompt.
+- `AUTONOMOUS_RESEARCH_SYSTEM.md`: ARS controller prompt.
+- `OUTPUT_CONTRACT.md`: required artifact list and formatting contract.
+- `operations.md`: 3-phase workflow overview.
+- `RESULT_TO_PAPER_ENGINE.md`: R2P controller prompt.
+- `RUN_PLANNING.txt`: one-shot planning trigger.
+- `RUN_WRITING.txt`: one-shot drafting trigger.
+- `CHATGPT_ONE_SHOT_TRIGGERS.md`: compact trigger prompt.
 - `NOTEBOOKLM_SINGLE_TRIGGER.md`: optional literature-ingestion prompt.
 - `research_blueprint_schema.json`: schema for `research_blueprint.json`.
 - `research_blueprint_sample.json`: sample blueprint payload.
 - `experiment_results_schema.json`: schema for `experiment_results.json`.
 - `experiment_results_sample.json`: sample results payload.
-- `result_pack_guide.md`: packaging guide for result bundles.
+- `result_pack_guide.md`: result packaging guide.
+- Starter templates:
+  - `experiment_design.md`
+  - `result_schema.json`
+  - `research_blueprint.json`
+  - `experiment_results.json`
+  - `paper_seed.md`
+  - `appendix_next_runs.md`
 
 ## Quick Start
 
@@ -47,10 +63,15 @@ The repository provides controller prompts, output contracts, schemas, and sampl
 2. Generate and keep the ARS artifacts defined in `OUTPUT_CONTRACT.md`.
 3. Execute experiments and write `experiment_results.json` matching `experiment_results_schema.json`.
 4. Run R2P using `RUN_WRITING.txt` and `RESULT_TO_PAPER_ENGINE.md`.
-5. Review generated drafts and evidence gaps (`appendix_next_runs.md`, if produced).
+5. Review generated drafts and evidence gaps (`appendix_next_runs.md`).
 
 ## Notes
 
 - Sample JSON files are illustrative and include `SAMPLE` placeholders.
 - The prompts are designed with a no-questions policy: missing details should be handled via explicit assumptions in outputs.
 - `LICENSE` is MIT.
+
+## Compatibility and Migration
+
+- Keep artifact naming aligned with `OUTPUT_CONTRACT.md`.
+- If artifact filenames/contracts change, update `README.md`, guides, and contract docs together.

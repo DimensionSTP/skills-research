@@ -1,0 +1,25 @@
+{
+  "meta": {
+    "version": "v1",
+    "created_utc": "SAMPLE_UTC"
+  },
+  "research_question": {
+    "rq": "SAMPLE",
+    "scope": "SAMPLE"
+  },
+  "hypotheses": [
+    {
+      "id": "H1",
+      "statement": "SAMPLE"
+    }
+  ],
+  "experiment_matrix": [
+    {
+      "id": "E1",
+      "name": "SAMPLE",
+      "datasets": ["SAMPLE"],
+      "baselines": ["SAMPLE"],
+      "variants": ["SAMPLE"]
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "meta": {
+    "blueprint_version": "v1",
+    "code_commit": "SAMPLE_COMMIT"
+  },
+  "runs": [
+    {
+      "experiment_id": "E1",
+      "dataset": "SAMPLE",
+      "variant": "SAMPLE",
+      "baseline": "SAMPLE",
+      "seed": 0,
+      "metrics": {
+        "accuracy": 0.0
+      }
+    }
+  ],
+  "aggregates": [
+    {
+      "experiment_id": "E1",
+      "dataset": "SAMPLE",
+      "variant": "SAMPLE",
+      "baseline": "SAMPLE",
+      "summary": {
+        "accuracy": 0.0
+      },
+      "dispersion": {
+        "accuracy_std": 0.0
+      }
+    }
+  ],
+  "artifacts": {
+    "tables": [],
+    "figures": [],
+    "logs": [],
+    "checkpoints": []
+  }
+}

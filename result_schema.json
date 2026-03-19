@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Result Schema Template",
+  "type": "object",
+  "required": [
+    "meta",
+    "runs",
+    "aggregates",
+    "artifacts"
+  ],
+  "properties": {
+    "meta": {
+      "type": "object"
+    },
+    "runs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "experiment_id",
+          "dataset",
+          "variant",
+          "baseline",
+          "seed",
+          "metrics"
+        ]
+      }
+    },
+    "aggregates": {
+      "type": "array"
+    },
+    "artifacts": {
+      "type": "object"
+    }
+  }
+}
