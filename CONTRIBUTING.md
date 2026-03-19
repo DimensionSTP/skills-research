@@ -24,6 +24,13 @@ Changes should keep behavior clear, traceable, and compatible with existing work
 - Recommended types: `add`, `fix`, `feat`, `refactor`, `rename`, `delete`, `docs`, `chore`
 - Prefer split commits by logical behavior, not by proximity
 
+## Documentation Contract
+
+When editing artifact names, schemas, or stage contracts, verify:
+- references in `README.md`, `README_ko.md`, `USAGE_GUIDE.md`, `USAGE_GUIDE_ko.md`, `OUTPUT_CONTRACT.md`, and `result_pack_guide.md` are synchronized
+- migration notes are added when visible naming/contracts change
+- template artifacts remain consistent with schema/contract intent
+
 ## Pull Request Checklist
 
 - [ ] Purpose and scope are explicit
